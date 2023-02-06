@@ -123,7 +123,6 @@ function Main() {
                 if (todoItem.id !== todo_id) {
                     return todoItem
                 }
-                return todoItem
             })
         )
 
