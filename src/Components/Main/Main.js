@@ -118,14 +118,7 @@ function Main() {
         // Printing Todo Id's to the console to keeptrack of delete requests
         console.log("Request to delete Todo item with id: " + todo_id)
 
-        setTodos(
-            todos.filter((todoItem) => {
-                if (todoItem.id !== todo_id) {
-                    return todoItem
-                }
-                return
-            })
-        )
+        setTodos(todos.filter(todoItem => todoItem.id !== todo_id))
 
         if (inputVal) {
             setInputVal('')
