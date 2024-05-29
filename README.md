@@ -8,7 +8,7 @@ This is a simple and user-friendly Todo List application built with React. It al
 - [Features](#features)
 - [Screenshot](#screenshot)
 - [Links](#links)
-- [Installation](#installation)
+- [Installation](#installation)   
 - [Usage](#usage)
 - [Technologies Used](#technologies-used)
 - [Frameworks Used](#frameworks-used)
