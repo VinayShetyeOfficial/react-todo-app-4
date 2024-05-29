@@ -13,7 +13,7 @@ This is a simple and user-friendly Todo List application built with React. It al
 - [Technologies Used](#technologies-used)
 - [Frameworks Used](#frameworks-used)
 - [Contributing](#contributing)
-- [License](#license)
+- [License](#license) 
 
 ## Overview
 
