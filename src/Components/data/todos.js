@@ -1,40 +1,46 @@
 /**
- * Default todo items for initializing the application.
- *
- * Each todo item has the following structure:
- * @typedef {Object} TodoItem
- * @property {number} id - Unique identifier for the todo item
- * @property {string} todo - Description of the todo task
- * @property {boolean} checked - Completion status of the todo item
- *
- * @constant {TodoItem[]}
+ * Initial demo todos for first-time users
+ * Each todo has:
+ * - id: unique identifier
+ * - todo: task description
+ * - checked: completion status
  */
 const todos = [
   {
     id: 1,
-    todo: "Complete Database Project Report",
+    todo: "Meal prep healthy lunches for the week",
     checked: false,
   },
   {
     id: 2,
-    todo: "Prepare Funding Request for Cyber Security Club",
+    todo: "Call a friend you haven't talked to in a while",
     checked: false,
   },
   {
     id: 3,
-    todo: "Review Data Mining Project Audio Extraction",
+    todo: "Go for an evening walk and listen to a podcast",
     checked: true,
   },
   {
     id: 4,
-    todo: "Optimize SQLite Queries",
+    todo: "Declutter your workspace for better focus",
     checked: false,
   },
-  {
-    id: 5,
-    todo: "Submit AI Course Project 3 Proposal",
-    checked: false,
-  },
+  // {
+  //   id: 5,
+  //   todo: "Read a chapter from a self-improvement book",
+  //   checked: false,
+  // },
+  // {
+  //   id: 6,
+  //   todo: "Practice mindfulness or meditation for 10 minutes",
+  //   checked: false,
+  // },
+  // {
+  //   id: 7,
+  //   todo: "Plan your tasks for the next day",
+  //   checked: false,
+  // },
 ];
 
 export default todos;
