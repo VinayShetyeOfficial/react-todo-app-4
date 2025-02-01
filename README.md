@@ -1,4 +1,4 @@
-# React Todo App [[Live Preview](https://todo-app-live4.netlify.app/)]
+# Todo App [[Live Preview](https://todo-app-live4.netlify.app/)]
 
 ![image](https://github.com/VinayShetyeOfficial/React-Todo-App-4/assets/100470361/d5437dcd-c3d9-4e8c-8a01-03f342e72695)
 
