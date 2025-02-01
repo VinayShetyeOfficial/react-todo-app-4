@@ -1,16 +1,13 @@
 /**
- * Main CSS file for styling the Main component.
- *
- * Sections:
- * - Global Styles: Resets and global styles.
- * - Main Container Styles: Styles for the main container.
- * - Input Field Styles: Styles for the input field.
- * - Button Styles: Styles for buttons.
- * - Notes Container Styles: Styles for the notes container.
- * - Action Button Styles: Styles for action buttons (edit, delete).
- * - Modal Styles: Styles for the modal.
- * - Media Queries: Responsive styles for different screen sizes.
+ * Main component styles
+ * Includes:
+ * - Layout and positioning
+ * - Todo item styling
+ * - Input field customization
+ * - Button styles
+ * - Responsive design adjustments
  */
+
 @import url("https://fonts.googleapis.com/css2?family=DynaPuff&display=swap");
 
 *,
@@ -63,13 +60,13 @@ body {
 }
 
 /* Input Field Styles */
-.input_Main {
+.todo-input {
   margin-inline: auto !important;
   margin-bottom: 15px !important;
   outline: none !important;
 }
 
-.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+.custom-input .input-root {
   font: inherit;
   letter-spacing: inherit;
   color: #00ffff !important;
@@ -77,19 +74,35 @@ body {
   box-sizing: content-box;
 }
 
-.css-1d3z3hw-MuiOutlinedInput-notchedOutline {
-  border-color: rgba(252, 252, 252, 1) !important;
+.custom-input .input-outline {
+  border-color: #ffffff !important;
+  border-width: 1px !important;
 }
 
-.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root,
-.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root {
+.custom-input .input-label {
   color: #00ffff !important;
 }
 
-.css-md26zr-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused
-  .MuiOutlinedInput-notchedOutline {
-  border-color: aqua !important;
-  border-width: 2px;
+.custom-input .input-label-focused {
+  color: #00ffff !important;
+}
+
+.custom-input .input-label-shrink {
+  color: #00ffff !important;
+}
+
+.custom-input .input-focused .input-outline {
+  border-color: #00ffff !important;
+  border-width: 2px !important;
+}
+
+/* Add this to ensure the outline is always visible */
+.custom-input .MuiOutlinedInput-notchedOutline {
+  border-color: #ffffff !important;
+}
+
+.custom-input .Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #00ffff !important;
 }
 
 /* Button Styles */
@@ -408,4 +421,24 @@ input[type="checkbox"]:checked ~ #action-container {
     justify-content: center;
     margin-block: 10px;
   }
+}
+
+/* Target the input field */
+.MuiInputBase-input.MuiOutlinedInput-input {
+  color: #00ffff !important;
+}
+
+/* Target the outline/border */
+.MuiOutlinedInput-notchedOutline {
+  border-color: #ffffff !important;
+}
+
+/* Target the label */
+.MuiInputLabel-root {
+  color: #00ffff !important;
+}
+
+/* Target the focused state */
+.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #00ffff !important;
 }
