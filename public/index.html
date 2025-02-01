@@ -3,22 +3,18 @@
 
 <head>
   <meta charset="utf-8" />
-  <!-- Favicon configuration -->
+  <!-- Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/favicon_io/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon_io/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon_io/favicon-16x16.png">
   <link rel="manifest" href="%PUBLIC_URL%/favicon_io/site.webmanifest">
   <link rel="icon" href="%PUBLIC_URL%/favicon_io/favicon.ico" />
-
-  <!-- Viewport and meta settings -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
-  <meta name="description" content="A modern React-based Todo application" />
+  <meta name="description" content="Web site created using create-react-app" />
   <title>React Todo App</title>
-
-  <!-- Material-UI label color overrides -->
   <style>
-    /* Ensure consistent label styling across states */
+    /* Add these styles to ensure consistent label color */
     .MuiInputLabel-root {
       color: #00ffff !important;
     }
@@ -27,7 +23,26 @@
       color: #00ffff !important;
     }
 
+    /* Ensure the label stays aqua colored even when the input is filled */
     .MuiInputLabel-shrink {
+      color: #00ffff !important;
+    }
+
+    /* Add these new styles for the outline - using a softer white */
+    .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+      border-color: rgba(255, 255, 255, 0.7) !important;
+    }
+
+    .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+      border-color: rgba(255, 255, 255, 0.7) !important;
+    }
+
+    .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+      border-color: #00ffff !important;
+    }
+
+    /* Style for the input text */
+    .MuiOutlinedInput-input {
       color: #00ffff !important;
     }
   </style>
