@@ -1,16 +1,3 @@
-/**
- * Global styles for the Todo application
- * 
- * Styles defined:
- * - Root element dimensions
- * - Body reset
- * - Background color
- * - Minimum height requirements
- * 
- * Note: These styles affect the entire application
- * and serve as the base styling layer.
- */
-
 body,
 #root {
   margin: 0;
