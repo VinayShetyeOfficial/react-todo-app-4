@@ -1,4 +1,6 @@
-# React Todo App
+# React Todo App [[Live Preview](https://todo-app-live4.netlify.app/)]
+
+![image](https://github.com/VinayShetyeOfficial/React-Todo-App-4/assets/100470361/d5437dcd-c3d9-4e8c-8a01-03f342e72695)
 
 This is a simple and user-friendly Todo List application built with React. It allows users to add, remove, and manage their daily tasks efficiently, helping them stay organized and productive.
 
@@ -27,12 +29,6 @@ The React Todo App provides a clean and intuitive interface for managing your da
 - **Delete All**: Remove all tasks from the list at once.
 - **Responsive Design**: The app is built with a responsive layout, ensuring a seamless experience across various devices and screen sizes.
 
-## Screenshot
-![image](https://github.com/VinayShetyeOfficial/React-Todo-App-4/assets/100470361/d5437dcd-c3d9-4e8c-8a01-03f342e72695)
-
-### Links
-
-Live Site URL: [Preview](https://animated-sunshine-9d02c8.netlify.app/)
 
 
 ## Installation
