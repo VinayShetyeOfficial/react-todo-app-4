@@ -1,22 +1,6 @@
 /**
- * Home component serves as the landing page for the Todo application.
- *
- * Features:
- * - Displays welcome message
- * - Provides navigation to the main todo interface
- * - Implements animated button text
- *
- * Props: None
- *
- * Hooks used:
- * - useNavigate: For programmatic navigation to the main todo interface
- *
- * Styling:
- * - Uses custom CSS from Home.css
- * - Implements Bootstrap Button component
- *
- * @component
- * @returns {JSX.Element} Rendered Home component
+ * Home component - Landing page for the Todo application
+ * Displays welcome message and navigation button to main todo list
  */
 import React from "react";
 import "./Home.css";
@@ -24,14 +8,12 @@ import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 
 function Home() {
-  // Initialize navigation hook
   const navigate = useNavigate();
 
   return (
     <div className="main_Home">
       <div className="container_Home">
         <h1 className="heading_Home">Welcome to our Todo list App</h1>
-        {/* Navigation button with animated text */}
         <Button
           className="btn_Home btn1"
           variant="outline-primary"
