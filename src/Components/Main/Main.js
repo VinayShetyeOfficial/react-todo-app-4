@@ -1,63 +1,30 @@
-import React, { useState } from "react";
+/**
+ * Main Todo application component.
+ * Handles todo list management including:
+ * - Adding new todos
+ * - Editing existing todos
+ * - Deleting todos
+ * - Displaying initial demo todos for first-time users
+ *
+ * Uses localStorage for data persistence
+ */
+import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button/Button";
 import "./Main.css";
 import { BsThreeDots } from "react-icons/bs";
 import { MdModeEditOutline, MdDelete } from "react-icons/md";
-import todos from "../data/todos.js"; // Import demo todos
+import todos from "../data/todos.js";
 
 /**
- * Main component serves as the primary interface for the Todo application.
+ * Custom modal component for confirming todo deletion
  *
- * Imports:
- * - React: Core library for building UI components.
- * - useState: React hook for managing component state.
- * - Box, TextField, Button: MUI components for UI elements.
- * - BsThreeDots, MdModeEditOutline, MdDelete: Icons for UI actions.
- * - todos: Default todo items for initialization.
- *
- * Functions:
- * - getLocalTodos: Retrieves todos from local storage.
- * - initializeLocalStorage: Initializes local storage with default todos if empty.
- * - CustomModal: Displays a modal for confirming deletion of all todos.
- * - Main: Main component function that handles todo operations.
- *
- * State:
- * - inputVal: string - Current value of the todo input field.
- * - todos: array - List of todo items.
- * - editItem: object - Tracks the item being edited.
- * - showModal: boolean - Controls the visibility of the delete confirmation modal.
- * - activeNoteIndex: number - Index of the currently active note for action buttons.
- *
- * Handlers:
- * - handleClose: Closes the delete confirmation modal.
- * - handleOpen: Opens the delete confirmation modal if there are todos.
- * - inputEvent: Updates inputVal state on input change.
- * - addTodo: Adds a new todo or updates an existing one.
- * - editTodo: Prepares a todo item for editing.
- * - deleteTodo: Removes a todo item by id.
- * - resetInput: Resets the input field.
- * - handleConfirm: Clears all todos and resets states.
- * - toggleActions: Toggles action buttons for a todo item.
- * - handleMouseEnter: Closes action buttons when hovering over another note.
+ * Props:
+ * - showModal: boolean - Controls modal visibility
+ * - handleClose: function - Closes the modal
+ * - handleConfirm: function - Handles deletion confirmation
  */
-
-// Retrieve Todos from local storage
-const getLocalTodos = () => {
-  let todos = localStorage.getItem("todos");
-  return todos ? JSON.parse(todos) : [];
-};
-
-// Initialize local storage with demo todos if empty
-const initializeLocalStorage = () => {
-  const storedTodos = localStorage.getItem("todos");
-  if (!storedTodos) {
-    localStorage.setItem("todos", JSON.stringify(todos));
-  }
-};
-
-// Custom Modal to confirm deletion of all Todos
 function CustomModal({ showModal, handleClose, handleConfirm }) {
   return (
     <>
@@ -91,59 +58,72 @@ function CustomModal({ showModal, handleClose, handleConfirm }) {
   );
 }
 
-// Main function - application starts from here
 function Main() {
-  // Call initialization before useState
-  initializeLocalStorage();
+  // Initialize todos with demo data for first-time users
+  const getInitialTodos = () => {
+    const isFirstLaunch = !localStorage.getItem("hasLaunched");
+    const storedTodos = localStorage.getItem("todos");
 
-  const [inputVal, setInputVal] = useState("");
-  const [todos, setTodos] = useState(getLocalTodos);
-  const [editItem, setEditItem] = useState({ id: null, isEditToggled: false });
-  const [showModal, setShowModal] = useState(false);
-  const [activeNoteIndex, setActiveNoteIndex] = useState(null); // Track active action buttons
+    if (isFirstLaunch) {
+      localStorage.setItem("hasLaunched", "true");
+      localStorage.setItem("todos", JSON.stringify(todos));
+      return todos;
+    }
 
-  const handleClose = () => setShowModal(false);
-  const handleOpen = () => {
-    if (todos.length) setShowModal(true);
+    return storedTodos ? JSON.parse(storedTodos) : [];
   };
+
+  // State management
+  const [todoList, setTodoList] = useState(getInitialTodos());
+  const [inputVal, setInputVal] = useState("");
+  const [editItem, setEditItem] = useState({ id: null, isEditToggled: false });
+  const [activeNoteIndex, setActiveNoteIndex] = useState(null);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  // Save to localStorage whenever todos change
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todoList)); // This will save todos to localStorage whenever the state changes
+  }, [todoList]);
 
   const inputEvent = (event) => {
     setInputVal(event.target.value);
   };
 
   const addTodo = () => {
-    if (inputVal && !editItem.isEditToggled) {
-      setTodos([
-        ...todos,
-        {
-          id: Date.now(),
-          todo: inputVal.trim(),
-          checked: false,
-        },
-      ]);
+    if (inputVal.trim() !== "") {
+      if (!editItem.isEditToggled) {
+        const newTodo = {
+          id: new Date().getTime().toString(),
+          todo: inputVal,
+        };
+        setTodoList([...todoList, newTodo]);
+      } else {
+        setTodoList(
+          todoList.map((elem) => {
+            if (elem.id === editItem.id) {
+              return { ...elem, todo: inputVal };
+            }
+            return elem;
+          })
+        );
+        setEditItem({ id: null, isEditToggled: false });
+      }
       setInputVal("");
-    } else if (inputVal) {
-      setTodos(
-        todos.map((todoItem) =>
-          todoItem.id === editItem.id
-            ? { ...todoItem, todo: inputVal.trim() }
-            : todoItem
-        )
-      );
-      setInputVal("");
-      setEditItem({ id: null, isEditToggled: false });
+      setActiveNoteIndex(null);
     }
   };
 
-  const editTodo = (todo_id, todo_desc) => {
-    setInputVal(todo_desc);
+  const editTodo = (todo_id, todo_text) => {
+    setInputVal(todo_text);
     setEditItem({ id: todo_id, isEditToggled: true });
-    // Keep actions open after clicking edit
   };
 
   const deleteTodo = (todo_id) => {
-    setTodos(todos.filter((todoItem) => todoItem.id !== todo_id));
-    setActiveNoteIndex(null); // Close actions
+    setTodoList(todoList.filter((todoItem) => todoItem.id !== todo_id));
+    setActiveNoteIndex(null);
   };
 
   const resetInput = () => {
@@ -151,20 +131,18 @@ function Main() {
   };
 
   const handleConfirm = () => {
-    setTodos([]);
+    setTodoList([]); // Delete all todos
     handleClose();
     setInputVal("");
     setEditItem({ id: null, isEditToggled: false });
-    setActiveNoteIndex(null); // Close actions
+    setActiveNoteIndex(null);
   };
 
-  // Toggle action buttons for the selected todo item
   const toggleActions = (index, event) => {
     event.stopPropagation();
-    setActiveNoteIndex((prev) => (prev === index ? null : index)); // Close if clicked again
+    setActiveNoteIndex((prev) => (prev === index ? null : index));
   };
 
-  // Close actions if user hovers over another note
   const handleMouseEnter = (index) => {
     if (activeNoteIndex !== index) setActiveNoteIndex(null);
   };
@@ -180,7 +158,6 @@ function Main() {
             id="fullWidth"
             value={inputVal}
             onChange={inputEvent}
-            className="input_Main"
             autoComplete="off"
           />
         </Box>
@@ -202,19 +179,19 @@ function Main() {
           <Button
             variant="outlined"
             className="btn_Main btn2"
-            onClick={handleOpen}
+            onClick={handleShow}
           >
             Delete All
           </Button>
         </div>
         <CustomModal
-          showModal={showModal}
+          showModal={show}
           handleClose={handleClose}
           handleConfirm={handleConfirm}
         />
       </div>
       <div className="notes_container_Main">
-        {todos.map((todoItem, indx) => (
+        {todoList.map((todoItem, indx) => (
           <div
             className="note_Main"
             key={indx}
@@ -239,7 +216,6 @@ function Main() {
                   onClick={(e) => {
                     e.stopPropagation();
                     editTodo(todoItem.id, todoItem.todo);
-                    // Do not close actions after clicking edit
                   }}
                 >
                   <MdModeEditOutline />
