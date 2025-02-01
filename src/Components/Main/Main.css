@@ -1,318 +1,411 @@
-@import url('https://fonts.googleapis.com/css2?family=DynaPuff&display=swap');
+/**
+ * Main CSS file for styling the Main component.
+ *
+ * Sections:
+ * - Global Styles: Resets and global styles.
+ * - Main Container Styles: Styles for the main container.
+ * - Input Field Styles: Styles for the input field.
+ * - Button Styles: Styles for buttons.
+ * - Notes Container Styles: Styles for the notes container.
+ * - Action Button Styles: Styles for action buttons (edit, delete).
+ * - Modal Styles: Styles for the modal.
+ * - Media Queries: Responsive styles for different screen sizes.
+ */
+@import url("https://fonts.googleapis.com/css2?family=DynaPuff&display=swap");
 
 *,
 *::before,
 *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-    width: 100vw;
-    height: 100vh;
-    position: relative;
-    /* overflow: hidden; */
+body {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background-color: #06063b;
+  overflow-x: hidden;
 }
 
-.main {
-    width: 100vw;
-    height: 100vh;
-    font-family: 'DynaPuff', cursive !important;
-    background-color: #06063b;
-    text-align: center !important;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+/* Main Container Styles */
+.main_Main {
+  width: 100%;
+  min-height: 100vh;
+  font-family: "DynaPuff", cursive !important;
+  background-color: #06063b !important;
+  text-align: center !important;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 .container_Main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center !important;
-    align-items: center !important;
-    margin-bottom: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-bottom: 0px;
+  padding-top: 50px;
+  padding-bottom: 22px;
+  background: #06063b;
+  position: sticky;
+  top: 0;
+  z-index: 20;
 }
 
 .heading_Main {
-    font-family: 'DynaPuff', cursive;
-    text-align: center;
-    color: #00ffff;
-    margin-bottom: 15px;
+  font-family: "DynaPuff", cursive;
+  text-align: center;
+  color: #00ffff;
+  margin-bottom: 15px;
 }
 
+/* Input Field Styles */
 .input_Main {
-    width: 500px !important;
-    margin-bottom: 15px !important;
-    outline: none !important;
+  margin-inline: auto !important;
+  margin-bottom: 15px !important;
+  outline: none !important;
 }
-
-.btn2 {
-    color: #00ffff !important;
-    font-family: 'DynaPuff', cursive !important;
-    font-size: 16px !important;
-    border: 1px solid #00ffff !important;
-    background-color: transparent !important;
-    font-weight: 500;
-}
-
-.btn2:not(:last-child){
-    margin-right: 15px;
-}
-
-.btn2:hover {
-    color: rgb(6, 6, 59) !important;
-    border-color: rgb(122, 124, 241) !important;
-    background-color: #00ffff !important;
-}
-
-/* Modifying Bootstrap classes predefined styles [---START---] */
 
 .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
-    font: inherit;
-    letter-spacing: inherit;
-    color: #00ffff !important;
-    padding: 4px 0 5px;
-    box-sizing: content-box;
+  font: inherit;
+  letter-spacing: inherit;
+  color: #00ffff !important;
+  padding: 4px 0 5px;
+  box-sizing: content-box;
 }
 
 .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
-    border-color: #ffffff46 !important;
+  border-color: rgba(252, 252, 252, 1) !important;
 }
 
 .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root,
 .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root {
-    color: #00ffff !important;
+  color: #00ffff !important;
 }
 
-.css-md26zr-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
-    border-color: aqua !important;
-    border-width: 2px;
+.css-md26zr-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused
+  .MuiOutlinedInput-notchedOutline {
+  border-color: aqua !important;
+  border-width: 2px;
 }
 
-/* Modifying Bootstrap classes predefined styles [---END---] */
+/* Button Styles */
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+  gap: 20px;
+}
+
+.btn2 {
+  color: #00ffff !important;
+  font-family: "DynaPuff", cursive !important;
+  font-size: 16px !important;
+  border: 1px solid #00ffff !important;
+  background-color: transparent !important;
+  font-weight: 500;
+}
+
+.btn2:hover {
+  color: rgb(6, 6, 59) !important;
+  border-color: rgb(122, 124, 241) !important;
+  background-color: #00ffff !important;
+}
+
+/* Notes Container Styles */
+.notes_container_Main {
+  padding: 40px 45px 0 45px;
+  overflow: auto;
+  padding-bottom: 0px;
+  padding-bottom: 100px;
+}
+
+.notes_container_Main::-webkit-scrollbar {
+  width: 0;
+}
 
 .note_Main {
-    position: relative;
-    width: 500px;
-    border: 1px solid #00ffff;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    padding: 10px;
-    text-align: left;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -ms-border-radius: 5px;
-    -o-border-radius: 5px;
-    color: #00ffff;
-    transition: box-shadow .3s;
-    word-break: break-all;
-    word-wrap: break-word;
+  position: relative;
+  width: 500px;
+  border: 1px solid #00ffff;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: left;
+  color: #00ffff;
+  transition: box-shadow 0.3s;
+  word-break: break-word;
+  margin-inline: auto;
+  background: #06063b;
 }
 
-.btn-container{
-    display: flex;
-    justify-content: space-between;
-    /* border: 1px solid lime; */
+.note_Main:hover {
+  box-shadow: -2px -1px 2px 1px rgba(0, 217, 255, 0.922),
+    -2px 1px 2px 1px rgba(0, 217, 255, 0.922);
 }
 
+/* Three-dot button (Toggle Button for Edit & Delete) */
 .action-toggle-btn {
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    font-size: 15px;
-    width: 23px;
-    height: 23px;
-    border-radius: 50%;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    -o-border-radius: 50%;
-    border: 2px solid #00ffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff !important;
-    background-color: #06063b !important;
-    transition: .3s opacity;
-    -webkit-transition: .3s opacity;
-    -moz-transition: .3s opacity;
-    -ms-transition: .3s opacity;
-    -o-transition: .3s opacity;
-    opacity: 0;
-    z-index: 10;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  font-size: 15px;
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  border: 2px solid #00ffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #06063b;
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+  cursor: pointer;
+  z-index: 10;
 }
 
-[id|="reveal-actions"] {
-    display: none;
+.note_Main:hover .action-toggle-btn {
+  opacity: 1;
 }
 
+/* Action Container (Holds Edit & Delete Buttons) */
 .action-container {
-    position: absolute;
-    top: -35px;
-    right: -35px;
-    opacity: 0;
-    transition: all .2s;
-    -webkit-transition: all .2s;
-    -moz-transition: all .2s;
-    -ms-transition: all .2s;
-    -o-transition: all .2s;
+  position: absolute;
+  right: -35px;
+  top: -35px;
+  width: 59px;
+  height: 80px;
+  transform: translate(40px, -10px);
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
 }
 
-input[type=checkbox]:checked ~ #action-container {
-    opacity: 1;
-    width: 50px;
-    height: 50px;
+/* When the three-dot button is clicked, show the action buttons */
+.action-checkbox {
+  display: none;
+}
+
+.action-checkbox:checked ~ .action-container {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Action Buttons - Edit & Delete */
+.action-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #00ffff;
+  background-color: #06063b;
+  color: #00ffff;
+  margin: 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translate(-15px, 0);
+  right: 19.5px;
+  top: 19.5px;
+  z-index: 5;
+}
+
+input[type="checkbox"]:checked ~ #action-container {
+  opacity: 1;
+  width: 50px;
+  height: 50px;
 }
 
 /* Styles for action Button + for Button conditions */
 
-.action-btn.edit{
-    z-index: 10;
+.action-btn.edit {
+  z-index: 10;
 }
 
-.action-btn.delete{
-    z-index: 5;
+.action-btn.delete {
+  z-index: 5;
 }
 
-.action-btn.edit:hover{
-    color: rgb(255, 221, 87) !important;
+/* Modal Styles */
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  transition: 0.3s opacity;
+  background-color: black;
+  opacity: 0;
+  z-index: -10;
+  display: none;
 }
 
-.action-btn.delete:hover{
-    color: rgb(255, 56, 56) !important; 
+.overlay_active {
+  opacity: 0.6;
+  z-index: 99;
+  display: block;
 }
 
-.action-btn.edit:active{
-    color: rgb(208, 167, 1) !important;
+.modal-container {
+  position: absolute;
+  top: 50px;
+  padding: 18px 20px 18px;
+  border: 1px solid aqua;
+  border-radius: 10px;
+  background-color: #15153c;
+  transition: all 0.3s linear;
+  opacity: 0;
+  z-index: -5;
 }
 
-.action-btn.delete:active{
-    color: rgb(195, 0, 0) !important; 
+.modal_active {
+  opacity: 1;
+  transform: translateY(70px);
+  z-index: 100;
 }
 
-input[type=checkbox]:checked ~ #action-container > .action-btn.edit {
-    transform: translate(22px, -22px);
-    -webkit-transform: translate(22px, -22px);
-    -moz-transform: translate(22px, -22px);
-    -ms-transform: translate(22px, -22px);
-    -o-transform: translate(22px, -22px);
-} 
+.modal-content {
+  text-align: center;
+}
 
-input[type=checkbox]:checked ~ #action-container > .action-btn.delete {
-    transform: translate(22px, 25px);
-    -webkit-transform: translate(22px, 25px);
-    -moz-transform: translate(22px, 25px);
-    -ms-transform: translate(22px, 25px);
-    -o-transform: translate(22px, 25px);
-} 
+.confirm_msg {
+  color: #fff;
+  margin-bottom: 25px;
+}
 
-.action-btn {
-    position: absolute;
-    top: 19.5px;
-    right: 19.5px;
-    border-radius: 50%;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    -o-border-radius: 50%;
-    display: flex;
+.msg-btn {
+  font-size: 13px !important;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.action-container.action-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: auto;
+}
+
+.action-container.action-active .action-btn.edit {
+  transform: translate(22px, -22px);
+  -webkit-transform: translate(22px, -22px);
+  -moz-transform: translate(22px, -22px);
+  -ms-transform: translate(22px, -22px);
+  -o-transform: translate(22px, -22px);
+}
+
+.action-container.action-active .action-btn.delete {
+  transform: translate(22px, 25px);
+  -webkit-transform: translate(22px, 25px);
+  -moz-transform: translate(22px, 25px);
+  -ms-transform: translate(22px, 25px);
+  -o-transform: translate(22px, 25px);
+}
+
+.action-btn.edit:hover {
+  color: #ffdd57 !important;
+}
+
+.action-btn.delete:hover {
+  color: #ff3838 !important;
+}
+
+.note_Main:not(:hover) .action-container {
+  opacity: 0;
+  transform: scale(0);
+  pointer-events: none;
+}
+
+/* Media Queries for Responsiveness */
+@media screen and (max-width: 768px) {
+  .container_Main {
+    width: 100%;
+    padding: 0 20px;
+    padding-bottom: 20px;
+  }
+
+  .notes_container_Main {
+    padding-inline: 20px;
+  }
+
+  .heading_Main {
+    font-size: 24px;
+    margin-top: 20px;
+    padding: 0 15px;
+  }
+
+  .btn-container {
+    flex-wrap: wrap;
+    gap: 10px;
     justify-content: center;
-    align-items: center;
-    width: 30px;
-    height: 30px;
-    font-size: 15px;
-    font-weight: 100;
-    border: 2px solid #00ffff;
-    color: #fff !important;
-    background-color: #06063b;
+  }
 
-    /* Transitions for action Buttons  */
-    transition: .5s transform;
-    -webkit-transition: .5s transform;
-    -moz-transition: .5s transform;
-    -ms-transition: .5s transform;
-    -o-transition: .5s transform;
+  .modal-container {
+    width: 90vw;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .modal_active {
+    transform: translate(-50%, 70px);
+  }
 }
 
-.note_Main:hover {
-    box-shadow: -2px -1px 2px 1px rgba(0, 217, 255, 0.922),
-                -2px 1px 2px 1px rgba(0, 217, 255, 0.922);
+@media screen and (max-width: 630px) {
+  .action-container.action-active .action-btn.edit {
+    transform: translate(-22px, -22px);
+    -webkit-transform: translate(-22px, -22px);
+    -moz-transform: translate(-22px, -22px);
+    -ms-transform: translate(-22px, -22px);
+    -o-transform: translate(-22px, -22px);
+  }
+
+  .action-container.action-active .action-btn.delete {
+    transform: translate(-22px, 25px);
+    -webkit-transform: translate(-22px, 25px);
+    -moz-transform: translate(-22px, 25px);
+    -ms-transform: translate(-22px, 25px);
+    -o-transform: translate(-22px, 25px);
+  }
 }
 
-.note_Main:hover .action-toggle-btn {
-    opacity: 1;
-    cursor: pointer;
+@media screen and (max-width: 560px) {
+  .note_Main {
+    width: 100%;
+  }
 }
 
-.notes_container_Main {
-    height: 60vh;
-    padding: 40px 45px 0 45px;
-    overflow: auto;
+@media screen and (max-width: 480px) {
+  .heading_Main {
+    font-size: 20px;
+  }
+
+  .btn2 {
+    font-size: 14px !important;
+  }
+
+  .note_Main {
+    padding: 8px;
+    margin-bottom: 15px;
+  }
 }
 
-.notes_container_Main::-webkit-scrollbar {
-    width: 0;
+@media screen and (max-width: 340px) {
+  .btn-container {
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-block: 10px;
+  }
 }
-
-.confirm_msg{
-    color: #fff;
-    margin-bottom: 25px;
-}
-
-.msg-btn{
-    font-size: 13px !important;
-}
-
-.modal-container{
-    position: absolute;
-    top: 50px;
-    padding: 18px 20px 18px;
-    border: 1px solid aqua;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
-    background-color: #15153c;
-    transition: all .3s linear;
-    opacity: 0;
-    z-index: -5;
-    -webkit-transition: all .3s linear;
-    -moz-transition: all .3s linear;
-    -ms-transition: all .3s linear;
-    -o-transition: all .3s linear;
-}
-
-.modal-overlay{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    transition: .3s opacity;
-    background-color: black;
-    opacity: 0;
-    z-index: -10;
-    -webkit-transition: .3s opacity;
-    -moz-transition: .3s opacity;
-    -ms-transition: .3s opacity;
-    -o-transition: .3s opacity;
-}
-
-.overlay_active{
-    opacity: .6;
-    z-index: 99;
-}
-
-.modal_active{
-    opacity: 1;
-    transform: translateY(70px);
-    -webkit-transform: translateY(70px);
-    -moz-transform: translateY(70px);
-    -ms-transform: translateY(70px);
-    -o-transform: translateY(70px);
-    z-index: 100;
-}
-
