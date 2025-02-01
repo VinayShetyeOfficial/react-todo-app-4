@@ -1,3 +1,14 @@
+/**
+ * Default todo items for initializing the application.
+ *
+ * Each todo item has the following structure:
+ * @typedef {Object} TodoItem
+ * @property {number} id - Unique identifier for the todo item
+ * @property {string} todo - Description of the todo task
+ * @property {boolean} checked - Completion status of the todo item
+ *
+ * @constant {TodoItem[]}
+ */
 const todos = [
   {
     id: 1,
